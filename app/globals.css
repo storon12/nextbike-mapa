@@ -233,6 +233,7 @@ h1, h2, h3 { text-wrap: balance; line-height: 1.2; }
   .brand span:not(.logo), .data-chip .fileinfo { display: none; }
   .topbar { gap: 8px; padding: 0 12px; }
   .nav a { padding: 6px 8px; }
+  .logout { padding: 0 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -479,3 +480,38 @@ select {
   .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .charts { grid-template-columns: 1fr; }
 }
+
+/* --- Přihlášení --- */
+.login-wrap { flex: 1; display: grid; place-items: center; padding: 24px 16px; min-height: 100%; }
+.login {
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  display: grid;
+  gap: 16px;
+}
+.login h1 { margin: 0; font-size: 20px; }
+.login-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.login-brand .logo {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  -webkit-mask: url(/logo.png) center / contain no-repeat;
+  mask: url(/logo.png) center / contain no-repeat;
+}
+.login input[type="password"] {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+.login input[aria-invalid] { border-color: var(--bad); }
+.login .btn { height: 40px; }
+.login-error { margin: 0; color: var(--bad); font-size: 14px; }

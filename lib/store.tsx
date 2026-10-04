@@ -58,6 +58,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [stations, setStations] = useState<StationData | null>(null)
 
   useEffect(() => {
+    if (window.location.pathname === '/login') return
     loadStations().then(setStations).catch(() => setError('Seznam stanic se nepodařilo načíst. Zkus stránku obnovit.'))
     idb<Saved>('readonly', (s) => s.get('saved')).then((v) => {
       if (v?.files?.length) setSaved(v)

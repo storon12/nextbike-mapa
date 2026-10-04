@@ -83,6 +83,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('mousedown', close)
   }, [showFiles])
 
+  if (pathname === '/login') return <div className="app">{children}</div>
+
   const excluded = reports.reduce((s, r) => s + r.invalid + r.noStart, 0)
   const noEnd = reports.reduce((s, r) => s + r.noEnd, 0)
 
@@ -134,6 +136,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         )}
         <PickFiles className={`btn ${rides.length ? '' : 'btn-primary'}`}>{busy ? 'Načítám…' : 'Nahrát data'}</PickFiles>
+        <form
+          method="post"
+          action="/api/logout"
+          onSubmit={() => {
+            // Nahraná data nemají na zařízení zůstat po odhlášení.
+            try { indexedDB.deleteDatabase('nextbike-mapa') } catch {}
+          }}
+        >
+          <button className="btn btn-ghost logout" type="submit">Odhlásit</button>
+        </form>
       </header>
       {error && (
         <div className="banner" role="alert">
