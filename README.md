@@ -9,6 +9,8 @@ Data (export „Rentals – All Rentals … Raw Data“, CSV oddělené tabulát
 
 `public/stations.json` je vygenerovaný ze `Stations.csv` (veřejný seznam stanic Nextbike).
 
+Přístup chrání jedno heslo z proměnné prostředí `APP_PASSWORD` (lokálně v `.env.local`, na Vercelu v Settings → Environment Variables). Volitelně `AUTH_SECRET` – změna kterékoliv z nich odhlásí všechny.
+
 ```bash
 npm install
 npm run dev
