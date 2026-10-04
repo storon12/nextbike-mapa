@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nextbike – mapa jízd
 
-## Getting Started
+Webová verze programů ze složky `Nextbike/PROGRAMY/MAPA` (původně Streamlit):
 
-First, run the development server:
+- **Mapa jízd** (`/`): přehrání výpůjček jednoho dne na mapě. Město se pozná z dat, přehrávání běží v prohlížeči (deck.gl + MapLibre, podklad OpenFreeMap), počasí z Open-Meteo.
+- **Eko analýza** (`/eko`): socioekonomický model z `EKO_MODEL` – přínosy vs. platby města za zvolené období.
+
+Data (export „Rentals – All Rentals … Raw Data“, CSV oddělené tabulátorem) se nahrávají v prohlížeči a nikam se neodesílají. Jména, e-maily a telefony se při načtení zahodí; zbytek zůstane jen v IndexedDB daného prohlížeče.
+
+`public/stations.json` je vygenerovaný ze `Stations.csv` (veřejný seznam stanic Nextbike).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Nasazení: GitHub → Vercel (stejně jako CRM), každý push do `main` se nasadí sám.
